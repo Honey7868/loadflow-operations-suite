@@ -1,0 +1,415 @@
+{
+  "organizations": [
+    {
+      "id": "org_j9be3grbm",
+      "name": "Apex Logistics (Broker)",
+      "type": "broker",
+      "created_at": "2026-07-15T12:26:38.427Z"
+    },
+    {
+      "id": "org_cs99fh179",
+      "name": "Titan Freight (Carrier)",
+      "type": "carrier",
+      "created_at": "2026-07-15T12:26:38.525Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr_zw6n6xzel",
+      "username": "broker_admin",
+      "password_hash": "$2a$10$TNj1D3NtkJP2AvkygSl8OuQ3Q01stPDbDZ2FbxkMJAbh2wKTJil6O",
+      "name": "Sarah Miller (Broker Admin)",
+      "org_id": "org_j9be3grbm",
+      "role_id": null,
+      "type": "broker_admin",
+      "created_at": "2026-07-15T12:26:38.519Z"
+    },
+    {
+      "id": "usr_qoxdgn20y",
+      "username": "broker_dispatch",
+      "password_hash": "$2a$10$TNj1D3NtkJP2AvkygSl8OuQ3Q01stPDbDZ2FbxkMJAbh2wKTJil6O",
+      "name": "Mike Jones (Dispatcher)",
+      "org_id": "org_j9be3grbm",
+      "role_id": "role_9xcylmuox",
+      "type": "broker_staff",
+      "created_at": "2026-07-15T12:26:38.523Z"
+    },
+    {
+      "id": "usr_uwxo4m8kc",
+      "username": "broker_ops",
+      "password_hash": "$2a$10$TNj1D3NtkJP2AvkygSl8OuQ3Q01stPDbDZ2FbxkMJAbh2wKTJil6O",
+      "name": "Dan Brown (Ops Lead)",
+      "org_id": "org_j9be3grbm",
+      "role_id": "role_scewgt9gd",
+      "type": "broker_staff",
+      "created_at": "2026-07-15T12:26:38.524Z"
+    },
+    {
+      "id": "usr_ydeu92bfx",
+      "username": "carrier_admin",
+      "password_hash": "$2a$10$TNj1D3NtkJP2AvkygSl8OuQ3Q01stPDbDZ2FbxkMJAbh2wKTJil6O",
+      "name": "David Clark (Carrier Admin)",
+      "org_id": "org_cs99fh179",
+      "role_id": null,
+      "type": "carrier_admin",
+      "created_at": "2026-07-15T12:26:38.527Z"
+    },
+    {
+      "id": "usr_qq73l80tq",
+      "username": "carrier_driver",
+      "password_hash": "$2a$10$TNj1D3NtkJP2AvkygSl8OuQ3Q01stPDbDZ2FbxkMJAbh2wKTJil6O",
+      "name": "John Doe (Driver)",
+      "org_id": "org_cs99fh179",
+      "role_id": "role_wc8qerhai",
+      "type": "carrier_staff",
+      "created_at": "2026-07-15T12:26:38.531Z"
+    },
+    {
+      "id": "usr_55fvttdns",
+      "username": "carrier_dispatch",
+      "password_hash": "$2a$10$TNj1D3NtkJP2AvkygSl8OuQ3Q01stPDbDZ2FbxkMJAbh2wKTJil6O",
+      "name": "Alice Smith (Carrier Dispatch)",
+      "org_id": "org_cs99fh179",
+      "role_id": "role_f814cfj82",
+      "type": "carrier_staff",
+      "created_at": "2026-07-15T12:26:38.533Z"
+    },
+    {
+      "id": "usr_837aeetxn",
+      "username": "shipper_acme",
+      "password_hash": "$2a$10$TNj1D3NtkJP2AvkygSl8OuQ3Q01stPDbDZ2FbxkMJAbh2wKTJil6O",
+      "name": "ACME Manufacturing (Shipper)",
+      "org_id": null,
+      "role_id": null,
+      "type": "shipper",
+      "created_at": "2026-07-15T12:26:38.535Z"
+    },
+    {
+      "id": "usr_dky5yxf2b",
+      "username": "shipper_walmart",
+      "password_hash": "$2a$10$TNj1D3NtkJP2AvkygSl8OuQ3Q01stPDbDZ2FbxkMJAbh2wKTJil6O",
+      "name": "Retail Giant Corp (Shipper)",
+      "org_id": null,
+      "role_id": null,
+      "type": "shipper",
+      "created_at": "2026-07-15T12:26:38.536Z"
+    }
+  ],
+  "roles": [
+    {
+      "id": "role_9xcylmuox",
+      "name": "Dispatcher",
+      "org_id": "org_j9be3grbm",
+      "permissions": [
+        "load.assign_carrier",
+        "rate.confirm",
+        "load.update_status"
+      ],
+      "created_at": "2026-07-15T12:26:38.521Z"
+    },
+    {
+      "id": "role_scewgt9gd",
+      "name": "Ops Lead",
+      "org_id": "org_j9be3grbm",
+      "permissions": [
+        "load.create",
+        "load.assign_carrier",
+        "load.override_compliance_flag",
+        "rate.confirm",
+        "load.update_status",
+        "staff.manage"
+      ],
+      "created_at": "2026-07-15T12:26:38.522Z"
+    },
+    {
+      "id": "role_wc8qerhai",
+      "name": "Driver",
+      "org_id": "org_cs99fh179",
+      "permissions": [
+        "load.update_status",
+        "pod.upload"
+      ],
+      "created_at": "2026-07-15T12:26:38.529Z"
+    },
+    {
+      "id": "role_f814cfj82",
+      "name": "Carrier Dispatcher",
+      "org_id": "org_cs99fh179",
+      "permissions": [
+        "rate.confirm",
+        "load.update_status",
+        "pod.upload"
+      ],
+      "created_at": "2026-07-15T12:26:38.530Z"
+    }
+  ],
+  "loads": [
+    {
+      "id": "load_0bxuu5bic",
+      "shipper_id": "usr_837aeetxn",
+      "broker_id": "org_j9be3grbm",
+      "carrier_id": null,
+      "status": "Posted",
+      "origin": "Chicago, IL",
+      "destination": "Dallas, TX",
+      "pickup_date": "2026-07-16",
+      "delivery_date": "2026-07-18",
+      "equipment_type": "Dry Van",
+      "commodity_type": "General Freight",
+      "weight": 42000,
+      "notes": "Fragile items. Handle with care.",
+      "compliance_flagged": 0,
+      "compliance_notes": "",
+      "current_rate_version": 0,
+      "created_at": "2026-07-15T12:26:38.538Z",
+      "updated_at": "2026-07-15T12:26:38.538Z"
+    },
+    {
+      "id": "load_and41pynm",
+      "shipper_id": "usr_dky5yxf2b",
+      "broker_id": "org_j9be3grbm",
+      "carrier_id": null,
+      "status": "Posted",
+      "origin": "Los Angeles, CA",
+      "destination": "Seattle, WA",
+      "pickup_date": "2026-07-17",
+      "delivery_date": "2026-07-20",
+      "equipment_type": "Reefer",
+      "commodity_type": "Produce",
+      "weight": 38000,
+      "notes": "Keep refrigerated at 34F.",
+      "compliance_flagged": 0,
+      "compliance_notes": "",
+      "current_rate_version": 0,
+      "created_at": "2026-07-15T12:26:38.539Z",
+      "updated_at": "2026-07-15T12:26:38.539Z"
+    },
+    {
+      "id": "load_30144h7jq",
+      "shipper_id": "usr_837aeetxn",
+      "broker_id": "org_j9be3grbm",
+      "carrier_id": "org_cs99fh179",
+      "status": "Delivered",
+      "origin": "Detroit, MI",
+      "destination": "Chicago, IL",
+      "pickup_date": "2026-07-20",
+      "delivery_date": "2026-07-22",
+      "equipment_type": "Dry Van",
+      "commodity_type": "General Freight",
+      "weight": 40000,
+      "notes": "Integration test load.\n[POD UPLOADED]: /uploads/pod_load_30144h7jq_1784118399309_signed_bol.pdf",
+      "compliance_flagged": 0,
+      "compliance_notes": "Carrier compliance verified successfully.",
+      "current_rate_version": 1,
+      "created_at": "2026-07-15T12:26:39.177Z",
+      "updated_at": "2026-07-15T12:26:39.309Z"
+    }
+  ],
+  "rateConfirmations": [
+    {
+      "id": "rate_bwl187l47",
+      "load_id": "load_30144h7jq",
+      "version": 1,
+      "base_rate": 1500,
+      "accessorials": "{\"fuel\":120}",
+      "confirmed_by_carrier_user_id": "usr_ydeu92bfx",
+      "confirmed_by_broker_user_id": "usr_qoxdgn20y",
+      "confirmed_at": "2026-07-15T12:26:39.292Z",
+      "created_at": "2026-07-15T12:26:39.284Z"
+    }
+  ],
+  "carrierCompliances": [
+    {
+      "id": "comp_v1gkypn3h",
+      "carrier_id": "org_cs99fh179",
+      "insurance_expiry": "2026-09-13",
+      "authority_status": "Active",
+      "mc_dot_number": "MC-749204",
+      "approved_equipment_types": "[\"Flatbed\",\"Dry Van\",\"Reefer\"]",
+      "approved_commodity_types": "[\"General Freight\",\"Steel\",\"Produce\"]",
+      "updated_at": "2026-07-15T12:26:38.528Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "log_wejxnshac",
+      "load_id": null,
+      "user_id": "system",
+      "username": "System",
+      "user_type": "broker_admin",
+      "action": "BOOTSTRAP",
+      "details": "Database initialized and seeded.",
+      "timestamp": "2026-07-15T12:26:38.540Z"
+    },
+    {
+      "id": "log_k5wdup5wj",
+      "load_id": "load_0bxuu5bic",
+      "user_id": "system",
+      "username": "System",
+      "user_type": "broker_admin",
+      "action": "LOAD_CREATED",
+      "details": "Seed load 1 created.",
+      "timestamp": "2026-07-15T12:26:38.541Z"
+    },
+    {
+      "id": "log_t0xc6y6zn",
+      "load_id": "load_and41pynm",
+      "user_id": "system",
+      "username": "System",
+      "user_type": "broker_admin",
+      "action": "LOAD_CREATED",
+      "details": "Seed load 2 created.",
+      "timestamp": "2026-07-15T12:26:38.543Z"
+    },
+    {
+      "id": "log_txpv7pzmv",
+      "load_id": null,
+      "user_id": "usr_zw6n6xzel",
+      "username": "broker_admin",
+      "user_type": "broker_admin",
+      "action": "LOGIN_SUCCESS",
+      "details": "User logged in successfully",
+      "timestamp": "2026-07-15T12:26:38.719Z"
+    },
+    {
+      "id": "log_wvtr068nt",
+      "load_id": null,
+      "user_id": "usr_qoxdgn20y",
+      "username": "broker_dispatch",
+      "user_type": "broker_staff",
+      "action": "LOGIN_SUCCESS",
+      "details": "User logged in successfully",
+      "timestamp": "2026-07-15T12:26:38.819Z"
+    },
+    {
+      "id": "log_2agtxx8ld",
+      "load_id": null,
+      "user_id": "usr_ydeu92bfx",
+      "username": "carrier_admin",
+      "user_type": "carrier_admin",
+      "action": "LOGIN_SUCCESS",
+      "details": "User logged in successfully",
+      "timestamp": "2026-07-15T12:26:38.909Z"
+    },
+    {
+      "id": "log_6e0u1s0v1",
+      "load_id": null,
+      "user_id": "usr_qq73l80tq",
+      "username": "carrier_driver",
+      "user_type": "carrier_staff",
+      "action": "LOGIN_SUCCESS",
+      "details": "User logged in successfully",
+      "timestamp": "2026-07-15T12:26:38.996Z"
+    },
+    {
+      "id": "log_mju8sjcfl",
+      "load_id": null,
+      "user_id": "usr_837aeetxn",
+      "username": "shipper_acme",
+      "user_type": "shipper",
+      "action": "LOGIN_SUCCESS",
+      "details": "User logged in successfully",
+      "timestamp": "2026-07-15T12:26:39.082Z"
+    },
+    {
+      "id": "log_ugd4uzkzf",
+      "load_id": null,
+      "user_id": "usr_dky5yxf2b",
+      "username": "shipper_walmart",
+      "user_type": "shipper",
+      "action": "LOGIN_SUCCESS",
+      "details": "User logged in successfully",
+      "timestamp": "2026-07-15T12:26:39.168Z"
+    },
+    {
+      "id": "log_zp9vfl49d",
+      "load_id": null,
+      "user_id": "usr_qoxdgn20y",
+      "username": "broker_dispatch",
+      "user_type": "broker_staff",
+      "action": "PERMISSION_DENIED",
+      "details": "{\"path\":\"/api/loads\",\"method\":\"POST\",\"reason\":\"Missing required permission: load.create\",\"requiredPermission\":\"load.create\"}",
+      "timestamp": "2026-07-15T12:26:39.173Z"
+    },
+    {
+      "id": "log_gowqfubk5",
+      "load_id": "load_30144h7jq",
+      "user_id": "usr_zw6n6xzel",
+      "username": "broker_admin",
+      "user_type": "broker_admin",
+      "action": "LOAD_CREATED",
+      "details": "Created load. Origin: Detroit, MI, Destination: Chicago, IL, Shipper: ACME Manufacturing (Shipper)",
+      "timestamp": "2026-07-15T12:26:39.179Z"
+    },
+    {
+      "id": "log_bkhy7wk7l",
+      "load_id": null,
+      "user_id": "usr_ydeu92bfx",
+      "username": "carrier_admin",
+      "user_type": "carrier_admin",
+      "action": "LOGIN_SUCCESS",
+      "details": "User logged in successfully",
+      "timestamp": "2026-07-15T12:26:39.271Z"
+    },
+    {
+      "id": "log_e467btmzu",
+      "load_id": "load_30144h7jq",
+      "user_id": "usr_qoxdgn20y",
+      "username": "broker_dispatch",
+      "user_type": "broker_staff",
+      "action": "CARRIER_ASSIGNED",
+      "details": "Assigned carrier \"Titan Freight (Carrier)\" (org_cs99fh179). Compliance Status: VERIFIED",
+      "timestamp": "2026-07-15T12:26:39.276Z"
+    },
+    {
+      "id": "log_r6kkf0nv7",
+      "load_id": "load_30144h7jq",
+      "user_id": "usr_qoxdgn20y",
+      "username": "broker_dispatch",
+      "user_type": "broker_staff",
+      "action": "RATE_CONFIRMATION_ISSUED",
+      "details": "Issued Rate Confirmation version 1. Base Rate: $1500. Accessorials: {\"fuel\":120}",
+      "timestamp": "2026-07-15T12:26:39.287Z"
+    },
+    {
+      "id": "log_d2cjqfzg0",
+      "load_id": "load_30144h7jq",
+      "user_id": "usr_ydeu92bfx",
+      "username": "carrier_admin",
+      "user_type": "carrier_admin",
+      "action": "RATE_CONFIRMATION_ACCEPTED",
+      "details": "Signed Rate Confirmation version 1",
+      "timestamp": "2026-07-15T12:26:39.293Z"
+    },
+    {
+      "id": "log_dd7bfywzd",
+      "load_id": "load_30144h7jq",
+      "user_id": "system",
+      "username": "System",
+      "user_type": "broker_admin",
+      "action": "STATUS_CHANGE",
+      "details": "Auto-promoted state from Carrier Assigned to Rate Confirmed after both parties signed rate agreement.",
+      "timestamp": "2026-07-15T12:26:39.297Z"
+    },
+    {
+      "id": "log_1wxqwvsyh",
+      "load_id": "load_30144h7jq",
+      "user_id": "usr_qq73l80tq",
+      "username": "carrier_driver",
+      "user_type": "carrier_staff",
+      "action": "STATUS_CHANGE",
+      "details": "Changed load status from \"Rate Confirmed\" to \"Dispatched\"",
+      "timestamp": "2026-07-15T12:26:39.305Z"
+    },
+    {
+      "id": "log_puz9g6qt1",
+      "load_id": "load_30144h7jq",
+      "user_id": "usr_qq73l80tq",
+      "username": "carrier_driver",
+      "user_type": "carrier_staff",
+      "action": "POD_UPLOADED",
+      "details": "Uploaded POD file: signed_bol.pdf. State updated to Delivered.",
+      "timestamp": "2026-07-15T12:26:39.310Z"
+    }
+  ]
+}

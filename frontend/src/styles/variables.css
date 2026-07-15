@@ -1,0 +1,58 @@
+:root {
+  /* HSL Palette */
+  --bg-dark: 222 47% 11%;
+  --bg-card: 223 47% 16%;
+  --bg-card-hover: 223 47% 20%;
+  
+  --primary: 217 91% 60%;         /* Deep Sapphire Blue */
+  --primary-hover: 217 91% 68%;
+  --primary-glow: 217 91% 60% / 0.15;
+  
+  --secondary: 160 84% 39%;       /* Emerald Mint for Carrier */
+  --secondary-hover: 160 84% 45%;
+  --secondary-glow: 160 84% 39% / 0.15;
+  
+  --shipper: 262 83% 58%;         /* Purple Amethyst for Shipper */
+  --shipper-hover: 262 83% 66%;
+  --shipper-glow: 262 83% 58% / 0.15;
+  
+  --accent: 38 92% 50%;           /* Amber gold for Warnings/Alerts */
+  --danger: 343 81% 55%;          /* Crimson for Errors */
+  --success: 142 71% 45%;         /* Success Green */
+  
+  --text-primary: 210 40% 98%;
+  --text-secondary: 215 20% 75%;
+  --text-muted: 215 16% 57%;
+  
+  --border: 217 32% 17%;
+  --border-focus: 217 91% 60%;
+  
+  /* Gradients */
+  --grad-broker: linear-gradient(135deg, hsl(217 91% 60%), hsl(222 47% 11%));
+  --grad-carrier: linear-gradient(135deg, hsl(160 84% 39%), hsl(222 47% 11%));
+  --grad-shipper: linear-gradient(135deg, hsl(262 83% 58%), hsl(222 47% 11%));
+  --grad-dark: linear-gradient(180deg, hsl(222 47% 11%), hsl(223 47% 7%));
+  
+  /* Styling Tokens */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 20px -8px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 12px 40px -12px rgba(0, 0, 0, 0.9);
+  --shadow-glow: 0 0 24px 0 rgba(37, 99, 235, 0.2);
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(12px);
+  
+  /* Fonts */
+  --font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
