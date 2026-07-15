@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Load, CarrierCompliance, Role, User } from '../types';
 import { LogOut, Eye, Search, AlertTriangle, ShieldCheck, FileText, CheckCircle, ShieldAlert, PlusCircle, Users, Settings } from 'lucide-react';
+import { apiUrl } from '../api';
 
 interface CarrierDashboardProps {
   user: any;
@@ -69,7 +70,7 @@ export const CarrierDashboard: React.FC<CarrierDashboardProps> = ({ user, token,
     setLoadingLoads(true);
     try {
       const query = searchTerm ? `?search=${encodeURIComponent(searchTerm)}` : '';
-      const response = await fetch(`/api/loads${query}`, {
+      const response = await fetch(apiUrl(`/api/loads${query}`), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -86,7 +87,7 @@ export const CarrierDashboard: React.FC<CarrierDashboardProps> = ({ user, token,
   // API Call: Fetch Compliance Profile
   const fetchCompliance = async () => {
     try {
-      const response = await fetch(`/api/compliance/${user.org_id}`, {
+      const response = await fetch(apiUrl(`/api/compliance/${user.org_id}`), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -118,10 +119,10 @@ export const CarrierDashboard: React.FC<CarrierDashboardProps> = ({ user, token,
   const fetchStaffAndRoles = async () => {
     // Check if user has permission to manage staff (Admins can, or staff with staff.manage)
     try {
-      const rolesRes = await fetch('/api/roles', {
+      const rolesRes = await fetch(apiUrl('/api/roles'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
-      const staffRes = await fetch('/api/auth/staff', {
+      const staffRes = await fetch(apiUrl('/api/auth/staff'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -143,7 +144,7 @@ export const CarrierDashboard: React.FC<CarrierDashboardProps> = ({ user, token,
   // View Single Load
   const viewLoadDetails = async (loadId: string) => {
     try {
-      const response = await fetch(`/api/loads/${loadId}`, {
+      const response = await fetch(apiUrl(`/api/loads/${loadId}`), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -159,7 +160,7 @@ export const CarrierDashboard: React.FC<CarrierDashboardProps> = ({ user, token,
     if (!selectedLoadData) return;
     setSigning(true);
     try {
-      const response = await fetch(`/api/loads/${selectedLoadData.load.id}/rate-confirmation/accept`, {
+      const response = await fetch(apiUrl(`/api/loads/${selectedLoadData.load.id}/rate-confirmation/accept`), {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -181,7 +182,7 @@ export const CarrierDashboard: React.FC<CarrierDashboardProps> = ({ user, token,
     if (!selectedLoadData) return;
     setUpdatingStatus(true);
     try {
-      const response = await fetch(`/api/loads/${selectedLoadData.load.id}/status`, {
+      const response = await fetch(apiUrl(`/api/loads/${selectedLoadData.load.id}/status`), {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -209,7 +210,7 @@ export const CarrierDashboard: React.FC<CarrierDashboardProps> = ({ user, token,
     setPodUploading(true);
 
     try {
-      const response = await fetch(`/api/loads/${selectedLoadData.load.id}/pod-upload`, {
+      const response = await fetch(apiUrl(`/api/loads/${selectedLoadData.load.id}/pod-upload`), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -249,7 +250,7 @@ export const CarrierDashboard: React.FC<CarrierDashboardProps> = ({ user, token,
     if (comProduce) approvedCommodityTypes.push('Produce');
 
     try {
-      const response = await fetch('/api/compliance', {
+      const response = await fetch(apiUrl('/api/compliance'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -289,7 +290,7 @@ export const CarrierDashboard: React.FC<CarrierDashboardProps> = ({ user, token,
     if (permPodUpload) permissions.push('pod.upload');
 
     try {
-      const response = await fetch('/api/roles', {
+      const response = await fetch(apiUrl('/api/roles'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -319,7 +320,7 @@ export const CarrierDashboard: React.FC<CarrierDashboardProps> = ({ user, token,
     setRbacSuccess('');
 
     try {
-      const response = await fetch('/api/auth/staff', {
+      const response = await fetch(apiUrl('/api/auth/staff'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

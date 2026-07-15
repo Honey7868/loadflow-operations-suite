@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Load, Role, User, AuditLog } from '../types';
 import { LogOut, Eye, Search, AlertTriangle, ShieldCheck, CheckCircle, ShieldAlert, PlusCircle, Users, Settings, Plus } from 'lucide-react';
+import { apiUrl } from '../api';
 
 interface BrokerDashboardProps {
   user: any;
@@ -79,7 +80,7 @@ export const BrokerDashboard: React.FC<BrokerDashboardProps> = ({ user, token, o
   const fetchLoads = async () => {
     setLoadingLoads(true);
     try {
-      let url = '/api/loads';
+      let url = apiUrl('/api/loads');
       const params = [];
       if (searchTerm) params.push(`search=${encodeURIComponent(searchTerm)}`);
       if (statusFilter) params.push(`status=${statusFilter}`);
@@ -102,7 +103,7 @@ export const BrokerDashboard: React.FC<BrokerDashboardProps> = ({ user, token, o
   // Fetch all organizations to get carrier list for assignment
   const fetchCarriers = async () => {
     try {
-      const logsResponse = await fetch('/api/audit-logs', {
+      const logsResponse = await fetch(apiUrl('/api/audit-logs'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (logsResponse.ok) {
@@ -116,10 +117,10 @@ export const BrokerDashboard: React.FC<BrokerDashboardProps> = ({ user, token, o
 
   const fetchStaffAndRoles = async () => {
     try {
-      const rolesRes = await fetch('/api/roles', {
+      const rolesRes = await fetch(apiUrl('/api/roles'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
-      const staffRes = await fetch('/api/auth/staff', {
+      const staffRes = await fetch(apiUrl('/api/auth/staff'), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -140,7 +141,7 @@ export const BrokerDashboard: React.FC<BrokerDashboardProps> = ({ user, token, o
 
   const viewLoadDetails = async (loadId: string) => {
     try {
-      const response = await fetch(`/api/loads/${loadId}`, {
+      const response = await fetch(apiUrl(`/api/loads/${loadId}`), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -159,7 +160,7 @@ export const BrokerDashboard: React.FC<BrokerDashboardProps> = ({ user, token, o
     setCreating(true);
 
     try {
-      const response = await fetch('/api/loads', {
+      const response = await fetch(apiUrl('/api/loads'), {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -204,7 +205,7 @@ export const BrokerDashboard: React.FC<BrokerDashboardProps> = ({ user, token, o
     if (!selectedCarrierId || !assignLoadId) return;
 
     try {
-      const response = await fetch(`/api/loads/${assignLoadId}/assign`, {
+      const response = await fetch(apiUrl(`/api/loads/${assignLoadId}/assign`), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -236,7 +237,7 @@ export const BrokerDashboard: React.FC<BrokerDashboardProps> = ({ user, token, o
     setProposingRate(true);
 
     try {
-      const response = await fetch(`/api/loads/${selectedLoadData.load.id}/rate-confirmation`, {
+      const response = await fetch(apiUrl(`/api/loads/${selectedLoadData.load.id}/rate-confirmation`), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -272,7 +273,7 @@ export const BrokerDashboard: React.FC<BrokerDashboardProps> = ({ user, token, o
     setOverriding(true);
 
     try {
-      const response = await fetch(`/api/loads/${selectedLoadData.load.id}/override-compliance`, {
+      const response = await fetch(apiUrl(`/api/loads/${selectedLoadData.load.id}/override-compliance`), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -297,7 +298,7 @@ export const BrokerDashboard: React.FC<BrokerDashboardProps> = ({ user, token, o
   const handleVerifyPod = async () => {
     if (!selectedLoadData) return;
     try {
-      const response = await fetch(`/api/loads/${selectedLoadData.load.id}/status`, {
+      const response = await fetch(apiUrl(`/api/loads/${selectedLoadData.load.id}/status`), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -319,7 +320,7 @@ export const BrokerDashboard: React.FC<BrokerDashboardProps> = ({ user, token, o
   const handleCloseLoad = async () => {
     if (!selectedLoadData) return;
     try {
-      const response = await fetch(`/api/loads/${selectedLoadData.load.id}/status`, {
+      const response = await fetch(apiUrl(`/api/loads/${selectedLoadData.load.id}/status`), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -352,7 +353,7 @@ export const BrokerDashboard: React.FC<BrokerDashboardProps> = ({ user, token, o
     if (permStaffManage) permissions.push('staff.manage');
 
     try {
-      const response = await fetch('/api/roles', {
+      const response = await fetch(apiUrl('/api/roles'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -384,7 +385,7 @@ export const BrokerDashboard: React.FC<BrokerDashboardProps> = ({ user, token, o
     setRbacSuccess('');
 
     try {
-      const response = await fetch('/api/auth/staff', {
+      const response = await fetch(apiUrl('/api/auth/staff'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Truck, ShieldAlert, KeyRound, UserCheck, PlusCircle } from 'lucide-react';
+import { apiUrl } from '../api';
 
 interface AuthPageProps {
   onLoginSuccess: (token: string, user: any, org: any) => void;
@@ -34,7 +35,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onLoginSuccess }) => {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch(apiUrl('/api/auth/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: loginUsername, password: loginPassword }),
@@ -57,7 +58,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onLoginSuccess }) => {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/auth/register-org', {
+      const response = await fetch(apiUrl('/api/auth/register-org'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -89,7 +90,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onLoginSuccess }) => {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/auth/register-shipper', {
+      const response = await fetch(apiUrl('/api/auth/register-shipper'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -117,7 +118,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onLoginSuccess }) => {
     setError('');
     setLoading(true);
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch(apiUrl('/api/auth/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password: 'password' }),

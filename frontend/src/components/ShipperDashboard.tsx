@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Load } from '../types';
 import { LogOut, Eye, Search, AlertCircle, Compass } from 'lucide-react';
+import { apiUrl } from '../api';
 
 interface ShipperDashboardProps {
   user: any;
@@ -18,7 +19,7 @@ export const ShipperDashboard: React.FC<ShipperDashboardProps> = ({ user, token,
     setLoading(true);
     try {
       const query = searchTerm ? `?search=${encodeURIComponent(searchTerm)}` : '';
-      const response = await fetch(`/api/loads${query}`, {
+      const response = await fetch(apiUrl(`/api/loads${query}`), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
@@ -38,7 +39,7 @@ export const ShipperDashboard: React.FC<ShipperDashboardProps> = ({ user, token,
 
   const viewLoadDetails = async (loadId: string) => {
     try {
-      const response = await fetch(`/api/loads/${loadId}`, {
+      const response = await fetch(apiUrl(`/api/loads/${loadId}`), {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
